@@ -1,0 +1,132 @@
+/*修复css*/
+body{background:var(--bg-page, #000) !important;}
+/* ========== 基础语义色（hex 变量） ========== */
+.bg-page { background-color: var(--bg-page); }
+.bg-card { background-color: var(--bg-card); }
+.text-main { color: var(--text-main); }
+.text-sub { color: var(--text-sub); }
+
+.bg-primary { background-color: var(--primary); }
+.text-primary { color: var(--primary); }
+.border-primary { border-color: var(--primary); }
+.ring-primary { --tw-ring-color: var(--primary); }
+
+/* 带透明度修饰符（hex 变量用 color-mix） */
+.bg-primary\/10 { background-color: color-mix(in srgb, var(--primary) 10%, transparent); }
+.bg-primary\/20 { background-color: color-mix(in srgb, var(--primary) 20%, transparent); }
+.bg-page\/50 { background-color: color-mix(in srgb, var(--bg-page) 50%, transparent); }
+.bg-card\/80 { background-color: color-mix(in srgb, var(--bg-card) 80%, transparent); }
+
+/* ========== shadcn/ui 语义 token（HSL 分量变量） ========== */
+.bg-background { background-color: hsl(var(--background)); }
+.text-foreground { color: hsl(var(--foreground)); }
+.bg-card-hsl { background-color: hsl(var(--card)); }
+.text-card-foreground { color: hsl(var(--card-foreground, var(--foreground))); }
+.bg-muted { background-color: hsl(var(--muted)); }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.border-border { border-color: hsl(var(--border)); }
+
+/* HSL 变量的透明度修饰符 */
+.bg-muted\/50 { background-color: hsl(var(--muted) / 0.5); }
+.text-muted-foreground\/70 { color: hsl(var(--muted-foreground) / 0.7); }
+
+/* ========== 变体 ========== */
+.hover\:text-main:hover { color: var(--text-main); }
+.hover\:text-primary:hover { color: var(--primary); }
+.hover\:bg-primary:hover { background-color: var(--primary); }
+
+.group:hover .group-hover\:text-primary { color: var(--primary); }
+.group:hover .group-hover\:text-main { color: var(--text-main); }
+
+.focus\:ring-2:focus { box-shadow: 0 0 0 2px var(--tw-ring-color, var(--primary)); }
+.focus\:ring-primary:focus { --tw-ring-color: var(--primary); }
+
+.placeholder\:text-muted-foreground::placeholder { color: hsl(var(--muted-foreground)); }
+.placeholder\:text-sub::placeholder { color: var(--text-sub); }
+
+/* ========== 响应式（补 md 断点，如果你的产物里已有 @media 可删掉这段） ========== */
+@media (min-width: 768px) {
+    .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 640px) {
+    .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+    .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+
+/* ========== 1. 自定义语义色（hex 变量） ========== */
+.bg-page{background-color:var(--bg-page)}
+.text-main{color:var(--text-main)}
+.text-sub{color:var(--text-sub)}
+.bg-card-custom{background-color:var(--bg-card)}   /* 注意：与 shadcn 的 bg-card 冲突时改用这个 */
+.text-primary{color:var(--primary)}
+.bg-primary{background-color:var(--primary)}
+.border-primary{border-color:var(--primary)}
+.ring-primary{--tw-ring-color:var(--primary)}
+.fill-primary{fill:var(--primary)}
+
+/* 透明度修饰符：利用主题文件自带的 --primary-rgb */
+.bg-primary\/10{background-color:rgba(var(--primary-rgb),0.1)}
+.bg-primary\/20{background-color:rgba(var(--primary-rgb),0.2)}
+.text-primary\/60{color:rgba(var(--primary-rgb),0.6)}
+.border-primary\/30{border-color:rgba(var(--primary-rgb),0.3)}
+
+/* --bg-page 没有 rgb 分量，用 color-mix */
+.bg-page\/50{background-color:color-mix(in srgb,var(--bg-page) 50%,transparent)}
+.bg-page\/80{background-color:color-mix(in srgb,var(--bg-page) 80%,transparent)}
+
+/* ========== 2. shadcn 语义 token（HSL 分量变量） ========== */
+.bg-background{background-color:hsl(var(--background))}
+.text-foreground{color:hsl(var(--foreground))}
+.bg-muted{background-color:hsl(var(--muted))}
+.text-muted-foreground{color:hsl(var(--muted-foreground))}
+.border-border{border-color:hsl(var(--border))}
+.bg-card-hsl{background-color:hsl(var(--card))}
+.text-card-foreground{color:hsl(var(--card-foreground,var(--foreground)))}
+
+/* HSL 透明度 */
+.bg-muted\/50{background-color:hsl(var(--muted)/0.5)}
+.bg-muted\/30{background-color:hsl(var(--muted)/0.3)}
+.text-muted-foreground\/70{color:hsl(var(--muted-foreground)/0.7)}
+.border-border\/50{border-color:hsl(var(--border)/0.5)}
+
+/* ========== 3. 变体 ========== */
+.hover\:text-main:hover{color:var(--text-main)}
+.hover\:text-primary:hover{color:var(--primary)}
+.hover\:bg-primary:hover{background-color:var(--primary)}
+.hover\:bg-muted:hover{background-color:hsl(var(--muted))}
+
+.group:hover .group-hover\:text-primary{color:var(--primary)}
+.group:hover .group-hover\:text-main{color:var(--text-main)}
+
+.focus\:ring-primary:focus{--tw-ring-color:var(--primary)}
+.focus\:border-primary:focus{border-color:var(--primary)}
+
+.placeholder\:text-muted-foreground::placeholder{color:hsl(var(--muted-foreground))}
+.placeholder\:text-sub::placeholder{color:var(--text-sub)}
+
+/* ========== 4. 响应式层（整个 @media 块缺失） ========== */
+@media (min-width:640px){
+    .sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+    .sm\:text-base{font-size:1rem;line-height:1.5rem}
+}
+@media (min-width:768px){
+    .md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .md\:flex{display:flex}
+    .md\:hidden{display:none}
+    .md\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+}
+@media (min-width:1024px){
+    .lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .lg\:max-w-\[430px\]{max-width:430px}
+}
+/*隐藏版权*/
+[data-xh-brand-btn="1"][data-xh-brand-fp="1b1ce3af"] {
+    display: none !important;
+}
